@@ -18,16 +18,17 @@ data %>%
 #data.na.out=filter(!is.na(data))
 data.na.out2=na.omit(data)
 
-studyName=data.na.out2$studyName
-Species=data.na.out2$Species
-Region=data.na.out2$Region
-Island=data.na.out2$Island
-Stage=data.na.out2$Stage
-Date.Egg=data.na.out2$Date.Egg
-Culmen.Length..mm=data.na.out2$Culmen.Length..mm.
-Culmen.Depth..mm=data.na.out2$Culmen.Depth..mm.
-Flipper.Length..mm=data.na.out2$Flipper.Length..mm.
-Body.Mass..g=data.na.out2$Body.Mass..g.
+#name set ups
+#studyName=data.na.out2$studyName
+Species=as.factor(data.na.out2$Species)
+#Region=data.na.out2$Region
+#Island=data.na.out2$Island
+#Stage=data.na.out2$Stage
+#Date.Egg=data.na.out2$Date.Egg
+Culmen.Length=data.na.out2$Culmen.Length..mm.
+Culmen.Depth=data.na.out2$Culmen.Depth..mm.
+Flipper.Length=data.na.out2$Flipper.Length..mm.
+Body.Mass=data.na.out2$Body.Mass..g.
 
 
 penguin.data=data.frame(
