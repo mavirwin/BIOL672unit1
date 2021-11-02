@@ -12,12 +12,12 @@ getwd()
 data.na.out2=na.omit(data)
 
 #name set ups
-studyName=data.na.out2$studyName
-Species=data.na.out2$Species
-Region=data.na.out2$Region
-Island=data.na.out2$Island
-Stage=data.na.out2$Stage
-Date.Egg=data.na.out2$Date.Egg
+#studyName=data.na.out2$studyName
+Species=as.factor(data.na.out2$Species)
+#Region=data.na.out2$Region
+#Island=data.na.out2$Island
+#Stage=data.na.out2$Stage
+#Date.Egg=data.na.out2$Date.Egg
 Culmen.Length=data.na.out2$Culmen.Length..mm.
 Culmen.Depth=data.na.out2$Culmen.Depth..mm.
 Flipper.Length=data.na.out2$Flipper.Length..mm.
@@ -82,10 +82,6 @@ plot4=ggplot(body.mass.data, aes(x=Species, y=Body.Mass, color=Species)) +
   geom_boxplot(stat="identity", color="black", position=position_dodge()) +
   geom_errorbar(aes(ymin=-BMsd, ymax=+BMsd), width=0.01, col="black")
 print(plot4)
-
-#factor, varname, etc.
-data.factor=as.factor(data.na.out2$Species)
-
 
 #pairwise t test, Bonferroni
 #Error in factor(g) : argument "g" is missing, with no default
