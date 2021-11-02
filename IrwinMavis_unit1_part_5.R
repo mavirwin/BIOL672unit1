@@ -18,17 +18,6 @@ data %>%
 #data.na.out=filter(!is.na(data))
 data.na.out2=na.omit(data)
 
-# studyName=data$studyName
-# Species=data$Species
-# Region=data$Region
-# Island=data$Island
-# Stage=data$Stage
-# Date.Egg=data$Date.Egg
-# Culmen.Length..mm=data$Culmen.Length..mm.
-# Culmen.Depth..mm=data$Culmen.Depth..mm.
-# Flipper.Length..mm=data$Flipper.Length..mm.
-# Body.Mass..g=data$Body.Mass..g.
-
 studyName=data.na.out2$studyName
 Species=data.na.out2$Species
 Region=data.na.out2$Region
