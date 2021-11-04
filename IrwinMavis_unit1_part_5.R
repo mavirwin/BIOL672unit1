@@ -5,9 +5,11 @@ library("reshape2")
 library("dplyr")
 library("ggpubr")
 library("janitor")
+library("palmerpenguins")
 
-data=read.table("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/penguins_lter.txt", header=TRUE, sep="\t")
-setwd("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive")
+data=read.csv("https://raw.githubusercontent.com/netuohcs/BiBC_essentials_20200916/master/data/penguins_lter.csv")
+#data=read.table("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/penguins_lter.txt", header=TRUE, sep="\t", )
+#setwd("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive")
 getwd()
 
 #remove empty rows and columns (nothing to remove)
@@ -18,17 +20,32 @@ data %>%
 #data.na.out=filter(!is.na(data))
 data.na.out2=na.omit(data)
 
-#name set ups
-#studyName=data.na.out2$studyName
+#turn Species string into integers
+Sp.int=strtoi(Species,)
+print(spn)
+
+# studyName=data$studyName
+# Species=data$Species
+# Region=data$Region
+# Island=data$Island
+# Stage=data$Stage
+# Date.Egg=data$Date.Egg
+# Culmen.Length..mm=data$Culmen.Length..mm.
+# Culmen.Depth..mm=data$Culmen.Depth..mm.
+# Flipper.Length..mm=data$Flipper.Length..mm.
+# Body.Mass..g=data$Body.Mass..g.
+
+studyName=data.na.out2$studyName
 Species=as.factor(data.na.out2$Species)
-#Region=data.na.out2$Region
-#Island=data.na.out2$Island
-#Stage=data.na.out2$Stage
-#Date.Egg=data.na.out2$Date.Egg
-Culmen.Length=data.na.out2$Culmen.Length..mm.
-Culmen.Depth=data.na.out2$Culmen.Depth..mm.
-Flipper.Length=data.na.out2$Flipper.Length..mm.
-Body.Mass=data.na.out2$Body.Mass..g.
+Species2=as.numeric(data.na.out2$Species)
+# Region=data.na.out2$Region
+# Island=data.na.out2$Island
+# Stage=data.na.out2$Stage
+# Date.Egg=data.na.out2$Date.Egg
+Culmen.Length..mm=data.na.out2$Culmen.Length..mm.
+Culmen.Depth..mm=data.na.out2$Culmen.Depth..mm.
+Flipper.Length..mm=data.na.out2$Flipper.Length..mm.
+Body.Mass..g=data.na.out2$Body.Mass..g.
 
 
 penguin.data=data.frame(
@@ -38,8 +55,6 @@ penguin.data=data.frame(
   Culmen.Depth..mm,
   Flipper.Length..mm,
   Body.Mass..g
-  # )%>%
-  # filter(!is.na(penguin.data)
 )
 
 print(penguin.data)
@@ -70,7 +85,7 @@ testKW=kruskal.test(Body.Mass..g~Species,data=body.mass.data)
 #Correlations, Pearson
 #Spec.fac=data.na.out2$Species=as.factor(data.na.out2$Species)
 #testcorP=cor.test(Culmen.Depth..mm,Culmen.Length..mm,use="complete.obs",method="pearson")
-testcorP=cor.test(Body.Mass..g,Species,use="complete.obs",method="pearson")
+testcorP=cor.test(Body.Mass..g,Species2,use="complete.obs",method="pearson")
 #testcorP=cor.test(Species, Body.Mass..g, method="pearson")
 #corP=cor(Body.Mass..g, Species,use="complete.obs",method="pearson")
 

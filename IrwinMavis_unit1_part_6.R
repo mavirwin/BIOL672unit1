@@ -3,9 +3,11 @@ print("Assignment 1, Part 6")
 library("ggplot2")
 library("reshape2")
 library("dplyr")
+library("palmerpenguins")
 
-data=read.table("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/penguins_lter.txt", header=TRUE, sep="\t")
-setwd("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive")
+data=read.csv("https://raw.githubusercontent.com/netuohcs/BiBC_essentials_20200916/master/data/penguins_lter.csv")
+#data=read.table("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/penguins_lter.txt", header=TRUE, sep="\t", )
+#setwd("C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive")
 getwd()
 
 #remove NA observations
@@ -13,11 +15,11 @@ data.na.out2=na.omit(data)
 
 #listing of columns
 studyName=data.na.out2$studyName
-Species=data.na.out2$Species
-Region=data.na.out2$Region
-Island=data.na.out2$Island
-Stage=data.na.out2$Stage
-Date.Egg=data.na.out2$Date.Egg
+Species=as.factor(data.na.out2$Species)
+# Region=data.na.out2$Region
+# Island=data.na.out2$Island
+# Stage=data.na.out2$Stage
+# Date.Egg=data.na.out2$Date.Egg
 Culmen.Length..mm=data.na.out2$Culmen.Length..mm.
 Culmen.Depth..mm=data.na.out2$Culmen.Depth..mm.
 Flipper.Length..mm=data.na.out2$Flipper.Length..mm.
@@ -25,7 +27,6 @@ Body.Mass..g=data.na.out2$Body.Mass..g.
 
 penguin.data=data.frame(
   Species,
-  Island,
   Culmen.Length..mm,
   Culmen.Depth..mm,
   Flipper.Length..mm,

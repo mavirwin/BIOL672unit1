@@ -1,4 +1,4 @@
-print("Assignment 1, Part 9")
+print("Assignment 1, Part 7")
 
 library("ggplot2")
 library("reshape2")
@@ -33,30 +33,4 @@ penguin.data=data.frame(
 
 print(penguin.data)
 
-data2=(summary(penguin.data))
-print(data2)
-
-penguin.data=data.frame(Sp, CL,CD,FL,BM)
-sub.pen.data=data.frame(CL,CD,FL,BM)
-print(sub.pen.data)
-
-test1 = lm(CL ~ CD + FL + BM, data = data.na.out2)
-test1 = lm(formula = CL ~ CD + FL + BM, data = data.na.out2, subset=Sp=="Adelie Penguin (Pygoscelis adeliae)")
-
-bind1= cbind(CL,CD,FL,BM)
-print (bind1)
-plot191 =pairs(bind1, col=Sp)
-theMLR = summary(test1)
-print(theMLR)
-print (plot191)
-sink("statsMLR_all.txt")
-print (theMLR)
-
-#make an external file
-sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/MLR.txt")
-print(theMLR)
-print(plot191)
-sink()
-
-
-cat("All right! \nWhere did those birds hide?")
+cat("The data I use up to now is suitable for the upcoming tasks. Let's go.")
