@@ -54,12 +54,17 @@ test184 <- oneway.test(BM~Sp)
 bind1 <- cbind(CL,CD,FL,BM)
 print (bind1)
 test185 <- manova(bind1~Sp, data = data.na.out2)
+
 print (test181)
 print (test182)
 print (test183)
 print (test184)
 theMANOVA <- summary(test185, test="Pillai")
 print(theMANOVA)
+
+VI8=cat("The one-way test for each type of measurements, one dependent variable at a time, between Species to be statistically significance \n
+Alas, the MANOVA's Pillai test looks for any differiences between multiple independent and dependent groups, resulting in a p-value<0.000-plus \n
+being statistically significance. But I am not sure whether the F-value of 369 is considered low or not.") 
 
 library('grid')
 pushViewport(viewport(layout = grid.layout(2, 2)))
@@ -75,6 +80,7 @@ print (test183)
 print (test184)
 theMANOVA = summary(test185, test="Pillai")
 print(theMANOVA) 
+print(VI8)
 sink()
 
 cat("All right! \nWhere did those birds hide?")
