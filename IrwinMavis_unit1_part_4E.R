@@ -68,7 +68,10 @@ test1=pairwise.t.test(Body.Mass, Species, p.adjust.method = "bonf")
 test2=pairwise.t.test(Body.Mass, Species,p.adjust.method = "BH")
 
 #Comments
-cat("For the body mass between Adelie Penguin vs. Chinstrap penguin, the P value adjustment bonf method was 1, and the BH method was 0.7. Besides those, the other pairings were 2e-16 for both approaches.")
+VI4E=cat("For the body mass between Adelie vs. Chinstrap, the P value adjustment bonf method was 1, \n
+#and the BH method was 0.7. The body mass of Adelie vs Chinstrap can be suggested to be statistally \n
+nonsignificace. Besides those, the Adilie vs. Gentoo and Chinscrap vs. Gentoo pairings are well below p-value<0.05, \n
+at about 2e-16 for both, suggesting that Gentoo may benefit being a statisally significance different size.")
 
 #make an external file
 sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/penguin.txt")
@@ -78,6 +81,7 @@ print(BMsd)
 print(BM.anova)
 print(test1)
 print(test2)
+print(VI4E)
 sink()
 
 #save plots on same pdf page
