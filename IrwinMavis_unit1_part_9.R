@@ -52,6 +52,9 @@ print (plot191)
 sink("statsMLR_all.txt")
 print (theMLR)
 
+VI9=cat("Red is Adelie, Yellow is Chinstrap, Purple is Garoon. My "bonus" is how we can know which color is represented. \n
+But that is beyond the purpose of this assignment. The MLR thing's 
+
 #make an external file
 sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/MLR.txt")
 print(theMLR)
