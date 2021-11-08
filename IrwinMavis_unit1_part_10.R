@@ -40,26 +40,32 @@ print(penguin.data)
 data2=(summary(penguin.data))
 print(data2)
 
-penguin.data=data.frame(Sp, CL,CD,FL,BM)
+penguin.data=data.frame(Sp,CL,CD,FL,BM)
 sub.pen.data=data.frame(CL,CD,FL,BM)
 print(sub.pen.data)
 
 #aov test
 test1=aov(formula = CL~CD*BM, data=data.na.out2)
-test2=aov(formula=CL~CD*Sp.int, data=data.na.out2)
+test2=aov(formula=CL~CD*FL, data=data.na.out2)
+
+print(test1)
+print(test2)
+
 bind1=cbind(CL,CD,FL,BM)
 print(bind1)
 
-#plot not working...
+#
+#legend() how do we add legend of the color assigned species in plot1101?
 plot1101=pairs(bind1, col=Sp)
 
 #ANCOVA
 theANCOVA= summary(test1)
-theANCOVA= summary(test2)
+theANCOVA2= summary(test2)
 print(theANCOVA)
+print(theANCOVA2)
 print(plot1101)
 
-note1=cat("The low F-values and way over p<0.001 p-values evaluated against body mass using \n
+note1=cat("The low F-values and extremely low p-values evaluated against body mass or flipper length using \n
 ANCOVA test appears to be statistically significant.I wanted to try with Species as integer, \n
           something is up with that one being empty. It did work last week...")
 
