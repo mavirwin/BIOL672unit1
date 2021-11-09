@@ -34,11 +34,12 @@ test1= summary(PCA1111) # print variance accounted for
 theload= loadings(PCA1111) # pc loadings 
 thescores= PCA1111$scores # the principal components
 
+print(theload)
 #scree plot
-plot(PCA1111,type="lines") # shows the variances of principal compoents, with  PC2 as 
-#possible fitting.
+plot(PCA1111,type="lines") # shows the variances of principal compoents
 biplot(PCA1111) #multi-dimersional PCA of four measurements.
 
+print(PCA1111)
 print(test1)
 print(theload)
 print(thescores)
@@ -52,13 +53,15 @@ MLFA=factanal(sub.pen.data, 1, rotation = "varimax")
 print(MLFA)
 
 #idea? Use the principal function to extract and rotate PCs...
+install.packages("psych")
 library("psych")
 PCnum=principal(sub.pen.data, nfactors=2, rotate="varimax")
 print(PCnum)
 
 #try factor 1 by factor 2
-load2=sub.pen.data$loadings [,1:2] #empty
-plot(load2)
+#load2=sub.pen.data$loadings [,1:2] #empty
+# plot(load2)
+# print(load2)
 
 #above is using factanal
 #below is based on the in PCA1 example, using prcomp
