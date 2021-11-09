@@ -53,7 +53,7 @@ MLFA=factanal(sub.pen.data, 1, rotation = "varimax")
 print(MLFA)
 
 #idea? Use the principal function to extract and rotate PCs...
-install.packages("psych")
+#install.packages("psych")
 library("psych")
 PCnum=principal(sub.pen.data, nfactors=2, rotate="varimax")
 print(PCnum)
@@ -98,4 +98,4 @@ note1=cat("We have three PCA approaches done for four measurements, separated by
 # print(note1)
 # sink()
 
-cat("A multidimensional dataset is nevermore? \n Short answer: No. \n Have a nice day.")
+cat("Is the multidimensional dataset now nevermore? \n Short answer: No. \n Have a nice day.")

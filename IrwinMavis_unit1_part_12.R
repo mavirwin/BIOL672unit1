@@ -27,11 +27,13 @@ sub.pen.data=data.frame(CL,CD,FL,BM)  #categorical Variance not included
 print(sub.pen.data)
 
 #determining the number of factors to extract
+install.packages("nFactors")
 library("nFactors")
 eigen=eigen(cor(sub.pen.data)) #get eigenvalues
 setpar=parallel(subject=nrow(sub.pen.data), var=ncol(sub.pen.data), rep=100, cent=.05)
 scree=nScree(x=eigen$values, aparallel = setpar$eigen$qevpea)
 plotnScree(scree)
+
 
 
 note=cat("Based on the eigenvalues in the plotnScree, I use two components.I expect having two factors \n

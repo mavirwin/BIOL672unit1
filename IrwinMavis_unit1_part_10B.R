@@ -12,7 +12,8 @@ data.int=read.csv("https://raw.githubusercontent.com/mavirwin/raw-data/main/peng
 getwd()
 
 #remove NA observations
-data.na.out2=na.omit(data)
+#data.na.out2=na.omit(data)
+data.na.out2=na.omit(data.int)
 
 #listing of columns
 Sp=as.factor(data.na.out2$Species)
@@ -24,7 +25,8 @@ BM= data.na.out2$Body.Mass..g.
 Sex=as.factor(data.na.out2$Sex)
 
 #used to work, but now empty for both numeric and integer???
-Sp.int=as.numeric(data.na.out2$Sp.as.int)
+Sp.int=data.na.out2$Sp.as.int
+print(data.na.out2$Sp.as.int)
 
 #multvariance by Species
 penguin.data=data.frame(
@@ -50,23 +52,24 @@ test2=aov(formula=CL~CD*Sp.int, data=data.na.out2)
 bind1=cbind(CL,CD,FL,BM)
 print(bind1)
 
-#plot not working...
+#plot that
 plot1101=pairs(bind1, col=Sp)
 
 #ANCOVA
 theANCOVA= summary(test1)
-theANCOVA= summary(test2)
+theANCOVA2= summary(test2)
 print(theANCOVA)
+print(theANCOVA2)
 print(plot1101)
 
 note1=cat("The low F-values and way over p<0.001 p-values evaluated against body mass using \n
 ANCOVA test appears to be statistically significant.I wanted to try with Species as integer, \n
           something is up with that one being empty. It did work last week...")
 
-#make an external file
-sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/ANCOVA.txt")
-print(theANCOVA)
-print(note1)
-sink()
+# #make an external file
+# sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/ANCOVA.txt")
+# print(theANCOVA)
+# print(note1)
+# sink()
 
 cat("All right! \nWhere did those birds hide?")
