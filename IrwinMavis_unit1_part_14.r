@@ -25,3 +25,4 @@ Sex=as.factor(data.na.out2$Sex)
 #penguin.data=data.frame(Sp, CL,CD,FL,BM)
 sub.pen.data=data.frame(CL,CD,FL,BM)  #categorical Variance not included
 print(sub.pen.data)
+

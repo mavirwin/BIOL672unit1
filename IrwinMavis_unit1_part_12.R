@@ -21,7 +21,7 @@ FL= data.na.out2$Flipper.Length..mm.
 BM= data.na.out2$Body.Mass..g.
 Sex=as.factor(data.na.out2$Sex)
 
-#Prepare dataframe for PCA
+#Prepare dataframes
 #penguin.data=data.frame(Sp, CL,CD,FL,BM)
 sub.pen.data=data.frame(CL,CD,FL,BM)  #categorical Variance not included
 print(sub.pen.data)
@@ -34,9 +34,6 @@ setpar=parallel(subject=nrow(sub.pen.data), var=ncol(sub.pen.data), rep=100, cen
 scree=nScree(x=eigen$values, aparallel = setpar$eigen$qevpea)
 plotnScree(scree)
 
-
-
-note=cat("Based on the eigenvalues in the plotnScree, I use two components.I expect having two factors \n
-for three species, because the two of three penguin species have somewhat similar \n
-         measurements as significance different to the third species. \n
+note1=cat("Based on the eigenvalues in the plotnScree, I would like to use... \n
          ")
+
