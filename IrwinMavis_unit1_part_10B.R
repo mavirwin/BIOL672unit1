@@ -66,17 +66,19 @@ head(norm.data)
 #aov test
 test1=aov(formula=BM~Sp, data=norm.data)
 test2=aov(formula=FL~Sp, data=norm.data)
-test3=aov(formula=CL~Sp+CD, data=norm.data)
-test4=aov(formula=FL~CD*CL, data=norm.data)
-test5=aov(formula=BM~CD*FL, data=norm.data)
+test3=aov(formula=CL*CD~Sp, data=norm.data)
+# test4=aov(formula=, data=norm.data)
+# test5=aov(formula=BM~CD*FL, data=norm.data)
 bind1=cbind(CL,CD,FL,BM)
 print(bind1)
 
 #post hoc test
+#dependent measurements must be integer, independent measurements must be factor
+#non-factors are ignored, and cannot have NULL
 
-TukeyHSD(test1)
-TukeyHSD(test2)
-TukeyHSD(test3)
+TukeyHSD(test1)#okay
+TukeyHSD(test2)#okay
+TukeyHSD(test3)#okay
 
 #plot that
 plot1101=pairs(bind1, col=Sp)
@@ -85,17 +87,21 @@ plot1101=pairs(bind1, col=Sp)
 theANCOVA= summary(test1)
 theANCOVA2= summary(test2)
 theANCOVA3= summary(test3)
-theANCOVA4= summary(test4)
-theANCOVA5= summary(test5)
+# theANCOVA4= summary(test4)
+# theANCOVA5= summary(test5)
 print(theANCOVA)
 print(theANCOVA2)
 print(theANCOVA3)
-print(theANCOVA4)
-print(theANCOVA5)
+# print(theANCOVA4)
+# print(theANCOVA5)
 
 note1=cat("The higher F-values and low p-values evaluated using the \n
-ANCOVA test suggests that the CL and CD measurements grouped by species is statistical significance. FL between
-species is somewhat significance, but not BM.")
+ANCOVA test suggests that the non-factor and dependent measurements grouped by \n
+factor and independent species is statistical significance. \n
+What can be interesting is seeing which pairs are statistically significant for each dependent.\n
+For example, the flipper length and body mass between species 1 and 2 are significant, but not for 1 vs 3 and 2 vs 3. \n
+But on the flip (flipping of bodies-ha), the CD*CL between 1 and 3 are significant. and not for 1vs2 and 2 vs 3?")
+
 
 # #make an external file
 # sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/ANCOVA.txt")

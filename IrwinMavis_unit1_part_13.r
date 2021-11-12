@@ -38,7 +38,8 @@ test$cluster = as.factor(test$cluster)
 plot1133 =ggplot(data.na.out2, aes(CL, CD, color = test$cluster)) + geom_point()                                 
 plot1134 =ggplot(data.na.out2, aes(FL, BM, color = test$cluster)) + geom_point()   
 
-note1=cat("For three penguin species, the question is whether two or three clusters make the most sense.")
+note1=cat("For three penguin species, the question is whether two or three clusters make the most sense. \n
+          For the most part, two would be")
 
 library('grid')
 pushViewport(viewport(layout = grid.layout(2, 2)))
