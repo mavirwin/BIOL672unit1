@@ -24,13 +24,17 @@ FL= data.na.out2$Flipper.Length..mm.
 BM= data.na.out2$Body.Mass..g.
 Sex=as.factor(data.na.out2$Sex)
 
-#used to work, but now empty for both numeric and integer???
+#species as integar 
 Sp.int=data.na.out2$Sp.as.int
 print(data.na.out2$Sp.as.int)
 
+#species IDs as factor
+Sp.int.fac=as.factor(data.na.out2$Sp.as.int)
+print(Sp.int.fac)
+
 #multvariance by Species
 penguin.data=data.frame(
-  Sp,#categorical variable
+  Sp.int.fac,#categorical variable
   CL,
   CD,
   FL,
@@ -42,7 +46,6 @@ print(penguin.data)
 data2=(summary(penguin.data))
 print(data2)
 
-penguin.data=data.frame(Sp, CL,CD,FL,BM)
 sub.pen.data=data.frame(CL,CD,FL,BM)
 print(sub.pen.data)
 
@@ -57,34 +60,38 @@ min_max_norm = function(x) {
 norm.data=as.data.frame(lapply(sub.pen.data, min_max_norm))
 head(norm.data)
 #add Species
-norm.data$Species=data.na.out2$Species
-head(norm.data.sp)
-
+norm.data$Sp=Sp.int.fac
+head(norm.data)
 
 #aov test
-# test1=aov(formula = CL~CD*BM, data=data.na.out2)
-# test2=aov(formula=Sp.int~CD*CL+FL, data=data.na.out2)
-# test3=aov(formula=BM~CD*CL+FL, data=data.na.out2)
-test4=aov(formula=Sp.int~CD*CL+FL+BM, data=norm.data)
-# test5=aov(formula=BM~CD*FL, data=data.na.out2)
+test1=aov(formula=BM~Sp, data=norm.data)
+test2=aov(formula=FL~Sp, data=norm.data)
+test3=aov(formula=CL~Sp+CD, data=norm.data)
+test4=aov(formula=FL~CD*CL, data=norm.data)
+test5=aov(formula=BM~CD*FL, data=norm.data)
 bind1=cbind(CL,CD,FL,BM)
 print(bind1)
+
+#post hoc test
+
+TukeyHSD(test1)
+TukeyHSD(test2)
+TukeyHSD(test3)
 
 #plot that
 plot1101=pairs(bind1, col=Sp)
 
 #ANCOVA
-# theANCOVA= summary(test1)
-# theANCOVA2= summary(test2)
-# theANCOVA3= summary(test3)
+theANCOVA= summary(test1)
+theANCOVA2= summary(test2)
+theANCOVA3= summary(test3)
 theANCOVA4= summary(test4)
-# theANCOVA5= summary(test5)
-# print(theANCOVA)
-# print(theANCOVA2)
-# print(theANCOVA3)
+theANCOVA5= summary(test5)
+print(theANCOVA)
+print(theANCOVA2)
+print(theANCOVA3)
 print(theANCOVA4)
-# print(theANCOVA5)
-print(plot1101)
+print(theANCOVA5)
 
 note1=cat("The higher F-values and low p-values evaluated using the \n
 ANCOVA test suggests that the CL and CD measurements grouped by species is statistical significance. FL between
