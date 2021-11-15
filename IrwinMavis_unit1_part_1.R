@@ -5,7 +5,7 @@ install.packages("ggplot2") #fancy plotting
 install.packages("reshape2") #flexibly reshape data
 install.packages("Rtools")#for Rmarkdown, not using anymore
 install.packages("knitr") #for Rmarkdown, not using anymore
-install.packages("dplyr") #for data manipulation
+install.packages("dplyr") #for data manipulation, resampling
 install.packages("plyr") #tool for splitting, applying, and combining Data
 install.packages("purrr") # functional programming tools, such as heatmaps
 install.packages("grid") #for multiple plots on same pdf page
@@ -16,7 +16,7 @@ install.packages("palmerpenguins") #those using this dataset intends that we/
 #use this package to make things a bit easier for beginners
 install.packages("mixtools")
 install.packages("MASS")
-# install.packages("")
+install.packages("caret") # for confusion matrix
 # install.packages("")
 # install.packages("")
 # install.packages("")
