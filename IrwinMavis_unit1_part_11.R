@@ -36,7 +36,7 @@ thescores= PCA1111$scores # the principal components
 
 print(theload)
 #scree plot
-plot(PCA1111,type="lines") # shows the variances of principal compoents
+plot(PCA1111,type="lines") # shows the variances of principal components
 biplot(PCA1111) #multi-dimersional PCA of four measurements.
 
 print(PCA1111)
@@ -88,12 +88,13 @@ loading_scoresPC4= PCA1111$rotation[,4]
 print(loading_scoresPC4)
 
 note1=cat("We have three PCA approaches done for four measurements, separated by princomp, factanal, and prcomp.\n
+          With the groups without the charactor factor of species, yields as two components. \n
           According to the loading scores, PC1 and maybe PC3 appear to have equal strengths. \n
           PC2 appears to have the CL and CD driven impressions.\n
            PC4 appears to be FL driven.")
 
 # #make an external file
-# sink(file="C:/Users/Videosystem/Desktop/RocASAsamples/Mavis_samples/archive/")
+# sink(file="")
 # print()
 # print(note1)
 # sink()

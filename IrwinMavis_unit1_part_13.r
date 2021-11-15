@@ -39,7 +39,7 @@ plot1133 =ggplot(data.na.out2, aes(CL, CD, color = test$cluster)) + geom_point()
 plot1134 =ggplot(data.na.out2, aes(FL, BM, color = test$cluster)) + geom_point()   
 
 note1=cat("For three penguin species, the question is whether two or three clusters make the most sense. \n
-          For the most part, two would be")
+          For the most part, two would be...")
 
 library('grid')
 pushViewport(viewport(layout = grid.layout(2, 2)))
@@ -49,3 +49,5 @@ print(plot1133, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
 print(plot1134, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
 
 cat("Since K-means is on the 3D scale, how can we rotate the 2-D figures as such? \n Good night.")
+
+

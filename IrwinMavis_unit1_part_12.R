@@ -35,8 +35,8 @@ setpar=parallel(subject=nrow(sub.pen.data), var=ncol(sub.pen.data), rep=100, cen
 scree=nScree(x=eigen$values, aparallel = setpar$eigen$qevpea)
 plotnScree(scree)
 
-note1=cat("Based on the eigenvalues in the plotnScree, I would like to use... \n
-         ")
+note1=cat("Based on the eigenvalues in the plotnScree, having two groupings of measurements \n
+         can be suggested. The factor of 2 was used for the presenting results. ")
 
 factanal(penguin.data, 2, rotation = "varimax")
 
