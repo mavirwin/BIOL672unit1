@@ -41,7 +41,10 @@ fitLNORM <- fitdistr(PZ, densfun="log-normal")
 print(fitLNORM)
 #played with: exponential(rate; dexp), gamma (shape, rate; dgamma?), cauchy (location, scale, dcauchy?), weibull (shape, scale, dweibell?)
 
-fitTEST <- fitdistr(PZ, densfun="gamma")
+# fitTEST <- fitdistr(PZ, densfun="gamma")
+# print(fitTEST)
+
+fitTEST <- fitdistr(PZ, densfun="cauchy")
 print(fitTEST)
 
 #GMM
@@ -59,11 +62,14 @@ print(BICfit)
 #NOTE plotting problem: "`stat_bin()` using `bins = 30`. Pick better value with `binwidth`." 
 print ("BIC for GMM")
 print(BIC_GMM2)
-plot1141 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(aes(y=..density..)) + geom_density() + stat_function(fun=dnorm, color="red", args=list(mean = fitNORM$estimate[1], sd = fitNORM$estimate[2])) 
-plot1142 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(aes(y=..density..)) + geom_density() + stat_function(fun=dlnorm, color="red", args=list(meanlog = fitLNORM$estimate[1], sdlog = fitLNORM$estimate[2])) 
+plot1141 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) + geom_density() + stat_function(fun=dnorm, color="red", args=list(mean = fitNORM$estimate[1], sd = fitNORM$estimate[2])) 
+plot1142 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) + geom_density() + stat_function(fun=dlnorm, color="red", args=list(meanlog = fitLNORM$estimate[1], sdlog = fitLNORM$estimate[2])) 
+#exp
 #plot1143 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(aes(y=..density..)) + geom_density() + stat_function(fun=dexp, color="red", args=list(rate = fitEXP$estimate[1])) 
-plot1143 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(aes(y=..density..)) + geom_density() + stat_function(fun=dgamma, color="red", args=list(shape= fitTEST$estimate[1], scale= fitTEST$estimate[2])) 
-
+#try gamma
+#plot1143 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) + geom_density() + stat_function(fun=dgamma, color="red", args=list(shape= fitTEST$estimate[1], rate= fitTEST$estimate[2])) 
+#try cauchy
+plot1143 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) + geom_density() + stat_function(fun=dcauchy, color="red", args=list(location = fitTEST$estimate[1], scale = fitTEST$estimate[2])) 
 plot1144 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(aes(y=2*(..density..))) + geom_density(aes(y=2*(..density..))) + stat_function(fun=dnorm, color="red", args=list(mean = fitGMM$mu[1], sd = fitGMM$sigma[1])) + stat_function(fun=dnorm, color="blue", args=list(mean = fitGMM$mu[2], sd = fitGMM$sigma[2])) 
 
 library('grid')
@@ -75,10 +81,9 @@ print(plot1143, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
 print(plot1144, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
 
 note1=cat("The GMM shows a possible two grouping distributions. I have messed around with other stuff /n
-          as my poteitial choices... Now, the plot1143 are showing red line as flat for some reason, as I do edit the names in the stat_function and list\n
-          And...the file's code is complaining about binwidths, which may be in the geom_histrogram part? \n
+          as my poteitial choices. \n
           According to the BIC printouts, the BIC_GMM at 4416 has better fit than other three tested so far as fitNORM=2260, fitLNORM= 4440, and fitTEST=4444(this one \n
-          used the gamma method.")
+          used the gamma method). Update: Tried cauchy, which is not a good fit, by the way of 4612 BIC results. ")
 
 #save
 # sink("stats.txt")
