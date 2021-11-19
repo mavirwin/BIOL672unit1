@@ -36,6 +36,7 @@ print(PZ)
 #normal
 fitNORM <- fitdistr(PZ, densfun="normal")
 print(fitNORM)
+fitNORM$estimate
 #lognormal
 fitLNORM <- fitdistr(PZ, densfun="log-normal")
 print(fitLNORM)
@@ -72,6 +73,7 @@ plot1142 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..den
 plot1143 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) + geom_density() + stat_function(fun=dcauchy, color="red", args=list(location = fitTEST$estimate[1], scale = fitTEST$estimate[2])) 
 plot1144 <-ggplot(penguin.data, aes(x=PZ)) + geom_histogram(aes(y=2*(..density..))) + geom_density(aes(y=2*(..density..))) + stat_function(fun=dnorm, color="red", args=list(mean = fitGMM$mu[1], sd = fitGMM$sigma[1])) + stat_function(fun=dnorm, color="blue", args=list(mean = fitGMM$mu[2], sd = fitGMM$sigma[2])) 
 
+print(fitTEST$estimate[1])
 library('grid')
 
 pushViewport(viewport(layout = grid.layout(2, 2)))

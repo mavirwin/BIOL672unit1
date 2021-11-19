@@ -32,23 +32,47 @@ print(sub.pen.data)
 PZ=(CL+CD+FL+BM)/4
 print(PZ)
 
-distributions = c((fit.normal=fitdistr(PZ, densfun="normal")$estimate), 
-                  (fit.cauchy=fitdistr(PZ, densfun="cauchy")$estimate), 
-                  (fit.gamma=fitdistr(PZ, densfun="gamma")$estimate))
+#set up dataframe: table
+distributions = as.data.frame(c((fit.normal=fitdistr(PZ, densfun="normal")$estimate),
+                  (fit.cauchy=fitdistr(PZ, densfun="cauchy")$estimate),
+                  (fit.gamma=fitdistr(PZ, densfun="gamma")$estimate)))
 
-print(distributions[2])
+print(distributions)
+#setup dataframe: header fix?
+distributions = (c((fit.normal=fitdistr(PZ, densfun="normal")$estimate), 
+                    (fit.cauchy=fitdistr(PZ, densfun="cauchy")$estimate), 
+                    (fit.gamma=fitdistr(PZ, densfun="gamma")$estimate)))
+print(distributions)
 
-#sp.dis=split.data.frame(distributions, as.factor, drop=FALSE)
-
+#fun= c(dnorm, dcauchy, dgamma) #function
+fun1= c("dnorm", "dcauchy", "dgamma") #function
+print(fun1)
 
 current1 <- 1
-for (distribution in distributions)
+current2 <- 2
+
+for (function1 in fun1)
 {
-  df=distribution[current1]
-  print(df)
-  current1= current1 + 1
+  
+    measure1=distributions[current1]
+    print(measure1)
+    measure2=distributions[current2]
+    print(measure2)
+  
+
+    print(function1)
+  
+    plot =ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) +
+    geom_density() + stat_function(fun=function1, color="red", args=list(measure1, measure2))
+    print(plot)
+  
+  current1<- current1 + 2
+  current2 <-current2 + 2
+
 }
-print(df)
+
+
+# print(df)
 
 # adjust.dis=data.frame(distributions$estimate)
 # print(distributions)
