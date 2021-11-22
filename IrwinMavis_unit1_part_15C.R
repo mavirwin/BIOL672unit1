@@ -72,61 +72,7 @@ for (function1 in fun1)
 }
 
 
-# print(df)
-
-# adjust.dis=data.frame(distributions$estimate)
-# print(distributions)
-# print(adjust.dis)
-# 
-# measures1 = c(fit.normal$estimate[1], head= FALSE, 
-#               fit.cauchy$estimate[1], 
-#               fit.gamma$estimate[1]) #measurement units
-# 
-# print(measure1[1])
-# fit.normal$estimate[1]
-# print(fit.normal$estimate[1],)
-#test miniloop layout
-#set our index to 0
-# current <- 0
-# for(distribution in distributions)
-# {
-#   measure1 = measures1[current]
-#    #move to the next one
-#   current= current + 1
-# }
-# print(distribution)
-# 
-# measures2 = c(fit.normal$estimate[2], 
-#               fit.cauchy$estimate[2], 
-#               fit.gamma$estimate[2]) #measurement units
-# 
-# functions = c(dnorm, dcauchy, dgamma) #function
-# 
-# #dataframe
-# fit.df= rbind.data.frame(distributions,measures1, measures2, functions)
-# 
-# print(fit.df)
 
 
-#set our index to 0
-current <- 0
-
-#go through a loop and pick out each element one at a time
-for(distribution in distributions)
-{
-  measure1 = measures1[current]
-  measure2 = measures2[current]
-  function1 = functions[current]
-  
-  fit= fitdistr(PZ, densfun=distribution)
-
-plot =ggplot(penguin.data, aes(x=PZ)) + geom_histogram(bins=30, aes(y=..density..)) + 
-  geom_density() + stat_function(fun=function1, color="red",
-  args=list(measure1=fit$estimate[1], measure2=fit$estimate[2]))
-print(plot)
-
-#move to the next one
-current= current + 1
-}
 
 note1=cat("")
