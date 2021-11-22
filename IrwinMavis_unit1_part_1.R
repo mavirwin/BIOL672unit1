@@ -17,8 +17,8 @@ install.packages("palmerpenguins") #those using this dataset intends that we/
 install.packages("mixtools")
 install.packages("MASS")
 install.packages("caret") # for confusion matrix
-# install.packages("")
-# install.packages("")
+install.packages("class") # for knn and such
+install.packages("e1071") # for Bayes
 # install.packages("")
 # install.packages
 # install.packages
