@@ -80,17 +80,19 @@ print(plot1142, vp = viewport(layout.pos.row = 1, layout.pos.col = 2))
 print(plot1143, vp = viewport(layout.pos.row = 2, layout.pos.col = 1))
 print(plot1144, vp = viewport(layout.pos.row = 2, layout.pos.col = 2))
 
-note1=cat("The GMM shows a possible two grouping distributions. I have messed around with other stuff /n
+note1=cat("The GMM shows a possible two grouping distributions. I have messed around with other stuff \n
           as my poteitial choices. \n
-          According to the BIC printouts, the BIC_GMM at 4416 has better fit than other three tested so far as fitNORM=2260, fitLNORM= 4440, and fitTEST=4444(this one \n
-          used the gamma method). Update: Tried cauchy, which is not a good fit, by the way of 4612 BIC results. ")
+          According to the BIC printouts, the fit.norm's lowest number of 2260 indirects the better fit in compare \n
+          to other three tested so far as fitLNORM= 4440, fitTEST=4444 (gamma), and GMM of 4416. \n
+          Also tried a different sort of measuring method called cauchy, but that approach was not a good fit (4612 in the BIC results). ")
 
 #save
-# sink("stats.txt")
+# sink("part14.stats.txt")
 # print(fitGMM)
 # print(BICfit)
 # print ("BIC for GMM")
 # print(BIC_GMM)
+# print(note1)
 # sink()
 
 
