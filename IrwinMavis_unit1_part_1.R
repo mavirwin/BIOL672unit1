@@ -19,11 +19,11 @@ install.packages("MASS")
 install.packages("caret") # for confusion matrix
 install.packages("class") # for knn and such
 install.packages("e1071") # for Bayes
-# install.packages("")
-# install.packages
-# install.packages
-# install.packages
-# install.packages
+install.packages("klaR") # for spliting native Baye thing? 
+install.packages("kernlab") #kernel functions
+#install.packages("liquidSVM") #support vector machine, but this package is obsolete 
+install.packages("tictoc") #timers
+install.packages("neuralnet") #neural networking
 # install.packages
 # install.packages
 # install.packages
