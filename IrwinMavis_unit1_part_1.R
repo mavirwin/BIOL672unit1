@@ -24,7 +24,7 @@ install.packages("kernlab") #kernel functions
 #install.packages("liquidSVM") #support vector machine, but this package is obsolete 
 install.packages("tictoc") #timers
 install.packages("neuralnet") #neural networking
-# install.packages
-# install.packages
-# install.packages
-# install.packages
+install.packages("keras") #for deep learning
+install.packages("tenso9rflow") #for deep learning
+install.packages("randomForest")#for random forest method
+install.packages("ada") # for adaboost
