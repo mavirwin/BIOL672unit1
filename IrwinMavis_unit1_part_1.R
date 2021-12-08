@@ -14,12 +14,12 @@ install.packages("janitor") #for adding space dashes and empty columns and rows
 #link for "janitor":  http://jenrichmond.rbind.io/post/digging-into-the-janitor-package/
 install.packages("palmerpenguins") #those using this dataset intends that we/
 #use this package to make things a bit easier for beginners
-install.packages("mixtools")
-install.packages("MASS")
+install.packages("mixtools") #for analyzing finite mixture models of with various parametric settings
+install.packages("MASS") # functions to support modern applied satistics with S
 install.packages("caret") # for confusion matrix
 install.packages("class") # for knn and such
 install.packages("e1071") # for Bayes
-install.packages("klaR") # for spliting native Baye thing? 
+install.packages("klaR") # for splitting the native Baye thing (?) 
 install.packages("kernlab") #kernel functions
 #install.packages("liquidSVM") #support vector machine, but this package is obsolete 
 install.packages("tictoc") #timers
